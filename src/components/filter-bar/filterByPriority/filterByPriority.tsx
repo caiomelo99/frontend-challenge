@@ -1,6 +1,5 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { FilterContainer, FilterIcon, PriorityFilter } from "./styles"
-import { faArrowDown } from "@fortawesome/free-solid-svg-icons"
+import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons"
 import { useState } from "react"
 import { useFilter } from "@/hooks/useFilter"
 import { PriorityTypes } from "@/types/priorityTypes"
@@ -18,7 +17,7 @@ export const FilterByPriority = () => {
     }
     return (
        <FilterContainer>
-            <button onClick={handleOpen}>Organizar por <FilterIcon icon={faArrowDown}/></button>
+            <button onClick={handleOpen}>Organizar por <FilterIcon icon={isOpen ? faArrowUp : faArrowDown}/></button>
             {isOpen && 
                 <PriorityFilter>
                     <li onClick={() => handleUpdatePriority(PriorityTypes.NEWS)}>Novidades</li>

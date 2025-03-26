@@ -5,6 +5,7 @@ export const FilterContainer = styled.div`
     display: flex;
     align-items: center;
     position: relative;
+    z-index: 999;
 
     button {
         font-family: inherit;

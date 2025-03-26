@@ -1,25 +1,29 @@
 'use client'
 
 import { Saira_Stencil_One } from "next/font/google"
-import { AreaIcon, Logo, PrimaryInput, TagHeader, AreaInput, RightSide} from "./styles"
-import {  faBagShopping, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
+import { Logo, TagHeader, RightSide, HeaderContainer} from "./styles"
+
 import { Cart } from "./cart/cart"
+import { AreaInput } from "./areaInput/areaInput"
+import { useFilter } from "@/hooks/useFilter"
 
 export const sairaStencial = Saira_Stencil_One({
     weight: ['400'],
     subsets: ['latin']
   })
 export const Header = () => {
+
+    const {search, setSearch} = useFilter()
+
     return (
         <TagHeader>
+            <HeaderContainer>
             <Logo className={sairaStencial.className}>Capputeeno</Logo>
             <RightSide>
-            <AreaInput>
-                <PrimaryInput placeholder="Procurando por algo específico?"/>
-                <AreaIcon icon={faMagnifyingGlass}/>
-            </AreaInput>
-            <Cart/>
+                <AreaInput value={search} handleChange={setSearch}/>
+                <Cart/>
             </RightSide>
+            </HeaderContainer>
         </TagHeader>
     )
 }
